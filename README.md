@@ -78,3 +78,56 @@ function order(callback) {
 ```
 
 - `ES2015+ 문법`
+  - `변수`
+    - var : 기준범위 함수
+    - let : 기준범위 {}, 변하는 값
+    - const : 기준범위 함수, 고정 값
+  - `템플릿 문자열`
+    - ${}
+  - `객체`
+  - `화살표 함수`
+  - `비구조화 활당`
+  - `프로미스`
+    - 프로미스 체이닝
+    - 지금은 아니지만 나중에 처리
+```javascript
+// 예시
+const pro11 = pid => {
+     return new Promise((resolve, reject) => {
+          setTimeout(() => {
+               if (pid == 'jamsuham') {
+                    resolve('pro11 success');
+               } else {
+                    reject('pro11 err');
+               }
+          }, 4000);
+     });
+}
+const pro12 = ppw => {
+     return new Promise((resolve, reject) => {
+          setTimeout(() => {
+               if (ppw == '1111') {
+                    resolve('pro12 success');
+               } else {
+                    reject('pro12 err');
+               }
+          }, 4000);
+     });
+}
+const id12 = 'jamsuham';
+const pw12 = '1111';
+pro11(id12).
+then(result => {
+     console.log('result11', result);
+     return pro12(pw12);
+}).then(result => {
+     console.log('result12', result);
+}).catch(err => {
+     console.log('err', err);
+     return Promise.reject(err);
+})
+```
+
+---
+
+### Node.js
