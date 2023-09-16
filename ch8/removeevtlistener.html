@@ -1,0 +1,22 @@
+<html>
+     <head></head>
+     <body>
+          <input type="button" id="btnclk" value="버튼">
+
+          <script>
+               function first(){
+                    alert('첫 번쨰 메시지');
+                    alert("DOM : " + this.value)
+               }
+               
+               btnclk.addEventListener('click', first);
+               btnclk.addEventListener('click', function(){
+                    alert('두 번쨰 메시지');
+                    alert("DOM : " + this.value)
+               });
+
+               btnclk.removeEventListener('click', first);
+               
+          </script>
+     </body>
+</html>
