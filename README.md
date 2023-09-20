@@ -2,7 +2,7 @@
 
 ## 배운 내용
 
-### HTML, CSS
+### 1. HTML, CSS
 
 - `HTML`
   - HTML 구성요소 3가지
@@ -18,7 +18,7 @@
   - `부트 스트랩`
     - JS + CSS(Framework)
 
-### Javascript
+### 2. Javascript
 
 - `변수와 자료형`
   - `원시형`
@@ -130,4 +130,44 @@ then(result => {
 
 ---
 
-### Node.js
+### 3. Node.js
+
+- `Node.js 시작`
+  - V8 엔진
+  - Node.js 사용 이유
+    - 이벤트 기반
+      - 콜백 함수
+    - 비동기(논블로킹 I/O)
+      - 블로킹
+      - 논플로킹
+    - http 모듈 기반
+  - express 기반 웹 서버
+    - http 모듈 기반에서 업그레이드
+    - listen(포트번호, 실행할코드)
+  - 기본적인 GET 요청
+    - get(웹서버에서 요청한 url, 콜백함수)
+    - 콜백함수(req, res)
+  - 서버에서 HTML 파일 전송
+    - send()
+      - 문자열 응답
+    - sendFile()
+      - sendFile(보낼 파일 경로)
+      - 파일 응답
+
+```javascript
+const express = require('express'); // express 라이브러리 사용해서 express 객체 생성
+const app = express(); // express 사용해서 새로운 app 객체 생성, app : 서버 객체라고 생각
+
+app.listen(8080, function(){ // listen : 서버 띄우고 client 객체의 요청 기다림, function() : 서버 구동시 콜백함수
+     console.log("포트 8080으로 서버 대기중.......")
+});
+
+app.get('/book', function(req, res) {
+     res.send('도서 목록 관련 페이지입니다. ');
+});
+
+app.get('/', function(req, res) {
+     res.sendFile(__dirname + '/index.html'); //__dirname : 현재 디렉토리 
+});
+```
+
