@@ -4,3 +4,7 @@ const app = express(); // express 사용해서 새로운 app 객체 생성, app 
 app.listen(8080, function(){ // listen : 서버 띄우고 client 객체의 요청 기다림, function() : 서버 구동시 콜백함수
      console.log("포트 8080으로 서버 대기중.......")
 });
+
+app.get('/book', function(req, res) {
+     res.send('도서 목록 관련 페이지입니다. ');
+});
