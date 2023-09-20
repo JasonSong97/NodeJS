@@ -10,5 +10,12 @@ app.get('/book', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-     res.send('홈 페이지입니다.');
+     res.send(
+          '<html>\
+          <body>\
+          <h1>홈 페이지입니다.</h1>\
+          <marquee>송재근님 반갑습니다.</marquee>\
+          </body>\
+          </html>'
+     );
 })
