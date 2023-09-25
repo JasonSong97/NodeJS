@@ -133,21 +133,21 @@ then(result => {
 ### 3. Node.js
 
 - `Node.js 시작`
-  - V8 엔진
-  - Node.js 사용 이유
+  - `V8 엔진`
+  - `Node.js 사용 이유`
     - 이벤트 기반
       - 콜백 함수
     - 비동기(논블로킹 I/O)
       - 블로킹
       - 논플로킹
     - http 모듈 기반
-  - express 기반 웹 서버
+  - `express 기반 웹 서버`
     - http 모듈 기반에서 업그레이드
     - listen(포트번호, 실행할코드)
-  - 기본적인 GET 요청
+  - `기본적인 GET 요청`
     - get(웹서버에서 요청한 url, 콜백함수)
     - 콜백함수(req, res)
-  - 서버에서 HTML 파일 전송
+  - `서버에서 HTML 파일 전송`
     - send()
       - 문자열 응답
     - sendFile()
