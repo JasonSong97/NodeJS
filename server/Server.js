@@ -9,12 +9,6 @@ var conn = mysql.createConnection({
 
 conn.connect();
 
-conn.query("select * from post", function(err, rows, fields) {
-     if (err) throw err;
-     console.log(rows);
-});
-
-
 //
 const express = require('express'); // express 라이브러리 사용해서 express 객체 생성
 const app = express(); // express 사용해서 새로운 app 객체 생성, app : 서버 객체라고 생각
@@ -29,4 +23,11 @@ app.get('/book', function(req, res) {
 
 app.get('/', function(req, res) {
      res.sendFile(__dirname + '/index.html'); //__dirname : 현재 디렉토리 
+});
+
+app.get('/list', function(req, res) {
+     conn.query("select * from post", function(err, rows, fields) {
+          if (err) throw err;
+          console.log(rows);
+     });
 });
