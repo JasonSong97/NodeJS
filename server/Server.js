@@ -1,13 +1,21 @@
 // Node.js - MongoDB 연동코드
 const mongoclient = require('mongodb').MongoClient;
 const url = 'mongodb+srv://admin:1234@cluster0.s8uqhla.mongodb.net/';
-mongoclient.connect(url).
-then(client => {
-     app.listen(8080, function() {
-          console.log('포트 8080으로 대기중............');
-     });
-}).catch(err => {
-     console.log(err);
+
+let mydb;
+
+mongoclient.connect(url)
+     .then((client) => {
+          mydb = client.db('myboard');
+          mydb.collection('post').find().toArray().then(result => {
+               console.log(result);
+          })
+          
+          app.listen(8080, function() {
+               console.log('포트 8080으로 서버 대기중.........');
+          });
+     }).catch(err => {
+          console.log(err);
 });
 
 // Node.js - MySQL 연동코드
