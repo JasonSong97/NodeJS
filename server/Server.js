@@ -1,3 +1,21 @@
+// Node.js - MySQL 연동코드
+var mysql = require('mysql');
+var conn = mysql.createConnection({
+     host: 'localhost',
+     user: 'root',
+     password: 'abc0701!!',
+     database: 'myboard'
+});
+
+conn.connect();
+
+conn.query("select * from post", function(err, rows, fields) {
+     if (err) throw err;
+     console.log(rows);
+});
+
+
+//
 const express = require('express'); // express 라이브러리 사용해서 express 객체 생성
 const app = express(); // express 사용해서 새로운 app 객체 생성, app : 서버 객체라고 생각
 
