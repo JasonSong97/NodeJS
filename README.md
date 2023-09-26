@@ -171,3 +171,129 @@ app.get('/', function(req, res) {
 });
 ```
 
+- `MySQL`
+  - `데이터베이스`
+    - DBMS 종류 
+      - MySQL
+      - Oracle
+      - MongoDB : NoSQL 기반 DBMS
+    - 데이터베이스 분류
+      - RDB
+        - Row, Column
+        - SQL로 데이터베이스 접근
+      - NoSQL
+        - SQL만 사용 X
+        - 확장 EZ, 다루기 쉬움, 스키마 정의 없이 사용 가능
+        - 종류
+          - Key-value 모델
+          - Document 모델
+          - Graph 모델
+          - Column-family 모델
+  - `스키마와 테이블 생성`
+    - 테이블(표) * N -> 스키마
+    - 스키마 * N -> 데이터베이스 서버
+  - `SQL문과 CRUD`
+    - 데이터 추가
+    - 데이터 조회
+    - 데이터 갱신
+    - 데이터 삭제
+  - `테이블 분리 및 조인`
+    - RDB 필요의 이유 : 중복된 컬럼 분리
+    - 테이블 분리
+    - 테이블 조인
+  - `MySQL 워크벤치`
+  - `MySQL + NodeJS 연동`
+
+```sql
+show databases; // 데이터베이스 목록을 보여줌
+use {schema 명}; // 데이터베이스 목록 중 1개를 사용
+show tables; // 사용중인 DB의 테이블을 보여줌
+
+// 스키마 생성
+create database {schema 명} default character set utf8; // 스키마 생성
+use {schema 명}; // 스키마 조작 전 사용 알림
+show tables; // Empty 값
+
+// 테이블 생성
+create table {테이블 명} (
+	-> id int(11) not null auto_increment,
+    -> title varchr(100) not null,
+    -> content text null
+    -> created datetime not null,
+    -> writer varchar(100) null,
+    -> email varchar(100) null,
+    -> primary key(id));
+desc {테이블 명}; // 테이블 보기
+```
+
+```sql
+// 데이터 추가
+insert into 테이블명 (필드명...) values(입력할 값...); 
+insert into post(title, content, created, writer, email) values('라면', '라면은 역시 밤에 먹는게 꿀맛', now(), 'song', 'song@naver.com');
+
+
+// 데이터 조회
+select 필드명... from 테이블; 
+select * from post;
+select id, title, content from post;
+
+select 필드명... from 테이블 where 조건; 
+select * from post where writer = 'song';
+
+select 필드명... from 테이블 order by 필드명 (desc?); 
+select * from post order by id desc;
+
+select 필드명... from 테이블 limit 출력할 데이터 개수; 
+select * from post limit 3;
+
+
+// 데이터 수정
+update 테이블명 set 수정할 필드 = '수정할 내용' where id = 수정할 데이터 id; 
+update post set content = '성격파탄자' where id = 3;
+update post set content = '성격파탄자', writer = '상남자' where id = 3;
+
+
+// 데이터 삭제
+delete from 테이블명 where id = 수정할 데이터 id; 
+delete from post where id = 3;
+```
+
+```sql
+rename table {기존 테이블명} to {바꾸고 싶은 테이블명}; 기존 테이블 명 바꾸기
+
+// 새로운 테이블 post, profile 작성 -> 데이터 넣기
+create table {테이블명} (
+	-> id int(11) not null auto_increment,
+    -> title varchr(30) not null,
+    -> content text null
+    -> created datetime not null,
+	-> profile_id int(11) default null,
+    -> primary key(id));
+create table {테이블명} (
+	-> id int(11) not null auto_increment,
+    -> writer varchar(30) null,
+    -> email varchar(100) null,
+    -> primary key(id));
+insert into ... 
+
+
+// 테이블 조인
+select 필드명 from 테이블1 left join 테이블2 on 테이블1.profile_id = 테이블2.id; // 형태
+select * from post 
+	left join profile 
+    on post.profile_id = profile.id;
+select * from post.id, title, content, created, writer, email 
+	left join profile 
+    on post.profile_id = profile.id;
+```
+
+- `MongoDB`
+  - `몽고DB Atlas 사용`
+  - `몽고DB 데이터베이스와 컬렉션`
+    - 몽고DB : 도큐먼트 지향 데이터베이스
+    - 도큐먼트 : XML, JSON 같은 형식의 데이터를 저장하는 것
+    - RDBMS보다 유연 -> 데이터 구조 알 수 없거나, 변경 및 확장이 있는 경우 사용
+    - JSON 형태의 동적 스키마형 도큐먼트 사용 (기본 데이터 : 도큐먼트)
+    - 도큐먼트 * N -> 컬렉션 : RDB의 테이블과 비슷한 개념
+  - `도큐먼트 사용`
+  - `몽고DB + NodeJS 연동`
