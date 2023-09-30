@@ -297,3 +297,5 @@ select * from post.id, title, content, created, writer, email
     - 도큐먼트 * N -> 컬렉션 : RDB의 테이블과 비슷한 개념
   - `도큐먼트 사용`
   - `몽고DB + NodeJS 연동`
+
+- 웹 서버 기본 기능 구현
